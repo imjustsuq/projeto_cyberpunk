@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exemplo setTimeout vs setInterval</title>
+</head>
+<body>
+    <h1>Contador e Mensagem</h1>
+    <p id="resultado"></p>
+    <button id="btn">Parar</button>
+
+    <script>
+        // setTimeout: executa uma vez após 3 segundos
+        const msgTimeout = setTimeout(() => {
+            document.getElementById('resultado').innerText = "Timeout executado!";
+        }, 3000);
+
+        // setInterval: executa a cada 1 segundo (1000ms)
+        let contador = 0;
+        const intervalo = setInterval(() => {
+            contador++;
+            document.getElementById('resultado').innerText += ` - Contagem: ${contador}`;
+        }, 1000);
+
+        // Exemplo de como parar o intervalo
+        document.getElementById('btn').addEventListener('click', () => {
+            clearInterval(intervalo);
+            clearTimeout(msgTimeout);
+            document.getElementById('resultado').innerText += " | Parado.";
+        });
+    </script>
+</body>
+</html>   
+
